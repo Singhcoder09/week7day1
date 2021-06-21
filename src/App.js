@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import BarChart from './Bar/BarChart';
+import SphereApp from './Sphere/SphereApp';
+import TreeApp from './Tree/TreeApp';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <Router>
+      <div className="App">
+        <a className="m-5 btn btn-warning" href="/barChart" rel="noopener noreferrer">
+          Animated Bar Chart
         </a>
-      </header>
-    </div>
+        <a className="m-5 btn btn-primary" href="/tree" rel="noopener noreferrer">
+          Collapsible Tree
+        </a>
+        <a className="m-5 btn btn-info" href="/spheres" rel="noopener noreferrer">
+          Sphere of Spheres
+        </a>
+        <Switch>
+          <Route exact path="/barChart">
+            <BarChart />
+          </Route>
+          <Route exact path="/tree">
+            <TreeApp />
+          </Route>
+          <Route exact path="/spheres">
+            <SphereApp />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
